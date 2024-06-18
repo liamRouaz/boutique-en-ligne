@@ -1,3 +1,16 @@
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    color: #00000053;
+    text-align: center;
+    padding: 10px 0;
+}
+
+footer h1 {
+    font-size: 1em;
+    margin: 0;
+}
 #menu {
 	background: #FDECFD;
 	background: linear-gradient(to bottom,  #FFFFFF,  #FDECFD);
