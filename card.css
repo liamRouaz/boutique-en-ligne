@@ -131,6 +131,13 @@ div.gallery ul li:hover .btn {
     max-width: 80%;
     width: 100%;
     padding: 10px;
+    margin-left: 75%;
+    position:absolute;
+}
+.video2 {
+    max-width: 80%;
+    width: 100%;
+    padding: 10px;
     position: absolute;
 }
 
@@ -139,3 +146,4 @@ video {
     height: auto;
     display: block;
 }
+
