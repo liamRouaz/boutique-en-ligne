@@ -1,11 +1,9 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
+    background-color: #ffffff;
     margin: 0;
     padding: 0;
 }
-
-
 
 h1 {
     font-family: 'Roboto Condensed', sans-serif;
@@ -38,10 +36,10 @@ div.gallery ul {
 div.gallery ul li {
     position: relative;
     float: left;
-    width: 130px;
-    height: 130px;
-    margin: 5px;
-    padding: 5px;
+    width: 200px; /* Taille de base modifiée */
+    height: 200px; /* Taille de base modifiée */
+    margin: 10px;
+    padding: 10px;
     z-index: 0;
     display: flex;
     justify-content: center;
@@ -54,19 +52,19 @@ div.gallery ul li img {
     top: 0;
     border: 1px solid #dddddd;
     padding: 5px;
-    width: 130px;
-    height: 130px;
+    width: 200px; /* Taille de base modifiée */
+    height: 200px; /* Taille de base modifiée */
     background: #f0f0f0;
-    transition: all 0.1s ease-in-out;
+    transition: all 0.3s ease-in-out;
 }
 
 div.gallery ul li:hover img {
-    width: 200px;
-    height: 200px;
-    margin-top: -130px;
-    margin-left: -130px;
-    top: 65%;
-    left: 65%;
+    width: 400px; /* Taille doublée */
+    height: 400px; /* Taille doublée */
+    margin-top: -100px; /* Centrer */
+    margin-left: -100px; /* Centrer */
+    top: 50%; /* Centrer */
+    left: 50%; /* Centrer */
     z-index: -1;
 }
 
@@ -110,21 +108,21 @@ div.gallery ul li:hover .btn {
     }
 
     div.gallery ul li {
-        width: 100px;
-        height: 100px;
+        width: 150px; /* Taille ajustée pour mobile */
+        height: 150px; /* Taille ajustée pour mobile */
     }
 
     div.gallery ul li img {
-        width: 100px;
-        height: 100px;
+        width: 150px; /* Taille ajustée pour mobile */
+        height: 150px; /* Taille ajustée pour mobile */
     }
 
     div.gallery ul li:hover img {
-        width: 150px;
-        height: 150px;
-        margin-top: -100px;
-        margin-left: -100px;
-        top: 75%;
-        left: 75%;
+        width: 300px; /* Taille doublée pour mobile */
+        height: 300px; /* Taille doublée pour mobile */
+        margin-top: -75px; /* Centrer */
+        margin-left: -75px; /* Centrer */
+        top: 50%; /* Centrer */
+        left: 50%; /* Centrer */
     }
 }
