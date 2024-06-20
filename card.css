@@ -258,6 +258,8 @@ button.primary:hover {
     transition: 1s;
     box-shadow: 6px 6px 0 black;
     transform: skewX(-15deg);
+    position: relative; /* Ajouté pour permettre l'utilisation de top */
+    top: -20px; /* Ajustez cette valeur pour déplacer le bouton vers le haut */
 }
 
 .cta:focus {
@@ -266,7 +268,7 @@ button.primary:hover {
 
 .cta:hover {
     transition: 0.5s;
-    box-shadow: 10px 10px 0 #FBC638;
+    box-shadow: 5px 5px 0 #FBC638;
 }
 
 .cta span:nth-child(2) {
@@ -279,17 +281,18 @@ button.primary:hover {
     margin-right: 45px;
 }
 
-  span {
+span {
     transform: skewX(15deg) 
-  }
+}
 
-  span:nth-child(2) {
-    width: 20px;
-    margin-left: 30px;
+span:nth-child(2) {
+    width: 10px;
+    height: 5px;
+    margin-left: 5px;
     position: relative;
     top: 12%;
-  }
-  
+}
+
 /**************SVG****************/
 
 path.one {
@@ -328,4 +331,10 @@ path.two {
     100% {
         fill: white;
     }
+}
+
+/* Ajout de la position relative et ajustement du top de la wrapper si nécessaire */
+.wrapper {
+    position: relative;
+    top: -30px; /* Ajustez cette valeur selon vos besoins */
 }
