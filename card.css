@@ -241,6 +241,10 @@ button.primary:hover {
 @import url('https://fonts.googleapis.com/css?family=Poppins:900i');
 
 
+#connexion .input{
+    top: -30px; /* Ajustez cette valeur selon vos besoins */
+    size: 20%;
+}
 
 .wrapper {
   display: flex;
@@ -336,5 +340,5 @@ path.two {
 /* Ajout de la position relative et ajustement du top de la wrapper si nécessaire */
 .wrapper {
     position: relative;
-    top: -30px; /* Ajustez cette valeur selon vos besoins */
+    top: -10px; /* Ajustez cette valeur selon vos besoins */
 }
