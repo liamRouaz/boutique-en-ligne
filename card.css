@@ -241,9 +241,25 @@ button.primary:hover {
 @import url('https://fonts.googleapis.com/css?family=Poppins:900i');
 
 
-#connexion .input{
-    top: -30px; /* Ajustez cette valeur selon vos besoins */
-    size: 20%;
+.connexion {
+    text-align: center;
+    padding: 20px;
+}
+
+input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 300px; /* Largeur par défaut */
+}
+
+.mail-input {
+    width: 300px; /* Largeur spécifique pour le champ email */
+}
+
+.password-input {
+    width: 300px; /* Largeur spécifique pour le champ mot de passe */
 }
 
 .wrapper {
