@@ -2,6 +2,7 @@ header {
   box-shadow: 0px 3px 5px black;
   
 }
+
 footer {
     position: fixed;
     width: 100%;
@@ -22,13 +23,12 @@ footer h1 {
 	background: linear-gradient(to bottom,  #FFFFFF,  #FDECFD);
 	height: 76px;
 	padding-left: 18px;
-	border-radius: 10px;
-   position: ;
 }
 #menu ul, #menu li {
 	margin: 0 auto;
 	padding: 0;
 	list-style: none
+  
 }
 #menu ul {
 	width: 100%;
