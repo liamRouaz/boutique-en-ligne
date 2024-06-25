@@ -1,0 +1,149 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #ffffff;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: 'Roboto Condensed', sans-serif;
+    color: #FFF;
+    font-size: 2.3em;
+}
+
+em {
+    color: #232027;
+}
+
+.wrapper {
+    width: 40%;
+    margin: 40px auto;
+    
+}
+
+div.gallery {
+    margin-top: 30px;
+}
+
+div.gallery ul {
+    list-style-type: none;
+    margin-left: 35px;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+div.gallery ul li {
+    position: relative;
+    float: left;
+    width: 200px; /* Taille de base modifiée */
+    height: 200px; /* Taille de base modifiée */
+    margin: 10px;
+    padding: 10px;
+    z-index: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.gallery ul li img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    border: 1px solid #dddddd;
+    padding: 5px;
+    width: 200px; /* Taille de base modifiée */
+    height: 200px; /* Taille de base modifiée */
+    background: #f0f0f0;
+    transition: all 0.3s ease-in-out;
+}
+
+div.gallery ul li:hover img {
+    width: 400px; /* Taille doublée */
+    height: 400px; /* Taille doublée */
+    margin-top: -100px; /* Centrer */
+    margin-left: -100px; /* Centrer */
+    top: 50%; /* Centrer */
+    left: 50%; /* Centrer */
+    z-index: -1;
+}
+
+div.gallery ul li:hover {
+    z-index: 5;
+}
+
+.btn {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 5px 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+div.gallery ul li:hover .btn {
+    opacity: 1;
+}
+
+/* Responsive hack */
+@media only screen and (min-width: 499px) and (max-width: 1212px) {
+    .wrapper {
+        width: 500px;
+    }
+}
+
+@media only screen and (max-width: 498px) {
+    .wrapper {
+        width: 300px;
+    }
+
+    div.gallery ul {
+        margin: 0;
+    }
+
+    div.gallery ul li {
+        width: 150px; /* Taille ajustée pour mobile */
+        height: 150px; /* Taille ajustée pour mobile */
+    }
+
+    div.gallery ul li img {
+        width: 150px; /* Taille ajustée pour mobile */
+        height: 150px; /* Taille ajustée pour mobile */
+    }
+
+    div.gallery ul li:hover img {
+        width: 300px; /* Taille doublée pour mobile */
+        height: 300px; /* Taille doublée pour mobile */
+        margin-top: -75px; /* Centrer */
+        margin-left: -75px; /* Centrer */
+        top: 50%; /* Centrer */
+        left: 50%; /* Centrer */
+    }
+}
+.video-container {
+    max-width: 80%;
+    width: 100%;
+    padding: 10px;
+    margin-left: 75%;
+    position:absolute;
+}
+.video2 {
+    max-width: 80%;
+    width: 100%;
+    padding: 10px;
+    position: absolute;
+}
+
+video {
+    width: 30%;
+    height: auto;
+    display: block;
+}
+

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion/Inscription</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <nav id='menu'>
+            <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
+            <ul>
+              <li><a href="index.html"><img  id="logo" src="./asset/Logo_Shop.png"  alt=""></li></a>
+              <li><a class='dropdown-arrow' href='http://'>Homme</a>
+                <ul class='sub-menus'>
+                  <li><a href='./Haut.html'>Hauts</a></li>
+                  <li><a href='http://'>Bas</a></li>
+                  <li><a href='http://'>Chaussures</a></li>
+                  <li><a href='http://'>Accesoires</a></li>
+                </ul>
+              </li>
+              <li><a class='dropdown-arrow' href='http://'>Femme</a>
+                <ul class='sub-menus'>
+                    <li><a href=''>Hauts</a></li>
+                    <li><a href='http://'>Bas</a></li>
+                    <li><a href='http://'>Chaussures</a></li>
+                    <li><a href='http://'>Accesoires</a></li>
+                  </ul>
+              </li>
+            </ul>
+          </nav>
+    </header>
+    <main>
+        <div class="form-container" id="form-container">
+            <h2>Connexion</h2>
+            <form id="login-form">
+            <div>
+                <label for="login-username">Nom d'utilisateur :</label>
+                <input type="text" id="login-username" placeholder="Entrez votre nom d'utilisateur" required>
+            </div>
+            <div>
+                <label for="login-password">Mot de passe :</label>
+                <input type="password" id="login-password" placeholder="Entrez votre mot de passe" required>
+            </div>
+            <button type="submit">Connexion</button>
+            </form>
+            <p>Pas encore de compte ? <a href="#" id="show-register">Créer un compte</a></p>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
+
