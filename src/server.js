@@ -21,4 +21,4 @@ app.use((err, req, res, next) => {
 // Démarrer serveur
 app.listen(PORT, () => {
   console.log("Serveur démarré sur le port ${PORT}");
-});
+};
