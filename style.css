@@ -1,0 +1,207 @@
+header {
+  box-shadow: 0px 3px 5px black;
+  
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    height: 25%;
+    bottom: 0;
+    color: #00000053;
+    text-align: center;
+    padding: 10px 0;
+    background-color: #ca32ca82;
+}
+
+footer h1 {
+    font-size: 1em;
+    margin: 0;
+}
+#menu {
+	background: #FDECFD;
+	background: linear-gradient(to bottom,  #FFFFFF,  #FDECFD);
+	height: 76px;
+	padding-left: 18px;
+}
+#menu ul, #menu li {
+	margin: 0 auto;
+	padding: 0;
+	list-style: none
+  
+}
+#menu ul {
+	width: 100%;
+	text-align: left;
+}
+#menu li {
+	display: inline-block;
+	position: relative;
+}
+#menu a {
+	display: block;
+	line-height: 76px;
+	padding: 0 14px;
+	text-decoration: none;
+	color: #000000;
+	font-size: 16px;
+}
+#menu a.dropdown-arrow:after {
+	content: "\25BF";
+	margin-left: 5px;
+}
+#menu li a:hover {
+	color: #97779b;
+	background: #F2F2F2;
+}
+#menu input {
+	display: none;
+	margin: 0;
+	padding: 0;
+	height: 76px;
+  width: 100%; 
+	opacity: 0;
+	cursor: pointer
+}
+#menu label {
+	display: none;
+	line-height: 76px;
+	text-align: center;
+	position: absolute;
+	left: 35px
+}
+#menu label:before {
+	font-size: 1.6em;
+	color: #000000;
+	content: "\2261"; 
+	margin-left: 20px;
+}
+#menu ul.sub-menus{
+	height: auto;
+	overflow: hidden;
+	width: 170px;
+	background: #000000;
+	position: absolute;
+	z-index: 99;
+	display: none;
+  top: 60px;
+}
+#menu ul.sub-menus li {
+	display: block;
+	text-align: left;
+	width: 100%;
+}
+#menu ul.sub-menus a {
+	color: #FDECFD;
+	font-size: 16px;
+}
+#menu li:hover ul.sub-menus {
+	display: block
+}
+#menu ul.sub-menus a:hover{
+	background: #F2F2F2;
+	color: #000000;
+}
+@media screen and (max-width: 800px){
+	#menu {position:relative}
+	#menu ul {background:#000000;position:absolute;top:100%;right:0;left:0;z-index:3;height:auto;display:none;text-align:left;}
+	#menu ul.sub-menus {width:100%;position:static;}
+	#menu ul.sub-menus a {padding-left:30px;}
+	#menu li {display:block;float:none;width:auto;}
+	#menu input, #menu label {position:absolute;top:0;left:0;display:block}
+	#menu input {z-index:4}
+	#menu input:checked + label {color:#000000}
+	#menu input:checked + label:before {content:"\00d7"}
+	#menu input:checked ~ ul {display:block}
+}
+#logo{
+    width: 120px;
+}
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  place-items: center;
+  font-family: "Ubuntu Mono", monospace;
+  font-weight: 400;
+}
+
+.container {
+  width: 100%;
+  padding-top: 1%;
+  display: flex;
+  justify-content: center;
+  height: 500px;
+  gap: 10px;
+
+  > div {
+    flex: 0 0 120px;
+    border-radius: 0.5rem;
+    transition: 0.5s ease-in-out;
+    cursor: pointer;
+    box-shadow: 1px 5px 15px #1e0e3e;
+    position: relative;
+    overflow: hidden;
+
+    &:nth-of-type(1) {
+      background: url("https://assets.laboutiqueofficielle.com/w_1100,q_auto,f_auto/media/products/2022/04/07/adidas_314558_HQ5841_20221130T113650_01.jpg")
+        no-repeat 50% / cover;
+    }
+    &:nth-of-type(2) {
+      background: url("https://i2.cdscdn.com/pdt2/9/2/0/1/1200x1200/kam2009794697920/rw/sac-bandouliere-sac-a-main-femme-en-cuir-pleine-fl.jpg")
+        no-repeat 50% / cover;
+    }
+    &:nth-of-type(3) {
+      background: url("https://i.pinimg.com/originals/88/a0/17/88a0171ffd0064a5bdd548291dde109f.jpg")
+        no-repeat 50% / cover;
+    }
+    &:nth-of-type(4) {
+      background: url("https://i.pinimg.com/originals/e9/9e/c8/e99ec808296699df20a7121a29634810.jpg")
+        no-repeat 50% / cover;
+    }
+
+    .content {
+      font-size: 1.5rem;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      padding: 15px;
+      opacity: 0;
+      flex-direction: column;
+      height: 100%;
+      justify-content: flex-end;
+      background: rgb(2, 2, 46);
+      background: linear-gradient(
+        0deg,
+        rgba(2, 2, 46, 0.6755077030812324) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: translatey(100%);
+      transition: opacity 0.5s ease-in-out, transform 0.5s 0.2s;
+      visibility: hidden;
+
+      span {
+        display: block;
+        margin-top: 5px;
+        font-size: 1.2rem;
+      }
+    }
+
+    &:hover {
+      flex: 0 0 250px;
+      box-shadow: 1px 3px 15px #FDECFD;
+      transform: translatey(-30px);
+    }
+
+    &:hover .content {
+      opacity: 1;
+      transform: translatey(0%);
+      visibility: visible;
+    }
+  }
+}
