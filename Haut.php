@@ -57,6 +57,7 @@
                         <p>You can also change the styles of the <code>::backdrop</code> from the CSS.</p>
                         <button onclick="document.getElementById('dialog1').close();" aria-label="close" class="x">❌</button>
                     </dialog>
+                    <button><img src="Banque_dimage/102665.png" alt=""></button>
                 </li>
                 <li>
                     <img src="./Banque_dimage/BBcicecreame_shirt2.jpeg" alt="BBC Ice Cream Shirt">
