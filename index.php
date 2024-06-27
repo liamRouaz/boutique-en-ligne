@@ -16,8 +16,8 @@
               <li><a href="index.html"><img  id="logo" src="./asset/Logo_Shop.png"  alt=""></li></a>
               <li><a class='dropdown-arrow' >Homme</a>
                 <ul class='sub-menus'>
-                  <li><a href='./Haut.html'>Hauts</a></li>
-                  <li><a href='./Bas.html'>Bas</a></li>
+                  <li><a href='./Haut.php'>Hauts</a></li>
+                  <li><a href='./Bas.php'>Bas</a></li>
                   <li><a href='./Chaussure.html'>Chaussures</a></li>
                   <li><a href='acsecoire.html'>Accesoires</a></li>
                 </ul>
