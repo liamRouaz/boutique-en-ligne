@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="card.css">
     <link rel="shortcut icon" href="./asset/shop.png" type="image/x-icon">
-    <title>Document</title>
+    <title>Boutique en ligne</title>
 </head>
 <body>
     <header>
