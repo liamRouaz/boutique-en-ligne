@@ -351,6 +351,10 @@ path.two {
     }
 }
 
+.icon {
+    width: 3px;
+    height: 3px;
+  }
 
 /* Ajout de la position relative et ajustement du top de la wrapper si nécessaire */
 .wrapper {

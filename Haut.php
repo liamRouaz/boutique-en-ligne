@@ -56,8 +56,8 @@
                         <p>A CSS-only modal based on the <a href="https://developer.mozilla.org/es/docs/Web/CSS/::backdrop" target="_blank">::backdrop</a> pseudo-class. Hope you find it helpful.</p>
                         <p>You can also change the styles of the <code>::backdrop</code> from the CSS.</p>
                         <button onclick="document.getElementById('dialog1').close();" aria-label="close" class="x">❌</button>
+                        <button>ajouter au panier</button>
                     </dialog>
-                    <button><img src="Banque_dimage/102665.png" alt=""></button>
                 </li>
                 <li>
                     <img src="./Banque_dimage/BBcicecreame_shirt2.jpeg" alt="BBC Ice Cream Shirt">
