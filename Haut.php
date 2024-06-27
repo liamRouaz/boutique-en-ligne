@@ -89,30 +89,8 @@ if (isset($_POST['add_to_cart'])) {
                         </form>
                     </dialog>
                 </li>
-                <li>
-                    <img src="./Banque_dimage/VLOO-1.jpg" alt="VLOO Shirt">
-                    <button class="primary" data-id="4" onclick="document.getElementById('dialog4').showModal();">Open Dialog</button>
-                    <dialog id="dialog4">
-                        <h2>VLOO Shirt</h2>
-                        <button onclick="document.getElementById('dialog4').close();" aria-label="close" class="x">❌</button>
-                        <form method="post" action="">
-                            <input type="hidden" name="product_id" value="4">
-                            <button type="submit" name="add_to_cart">Ajouter au panier</button>
-                        </form>
-                    </dialog>
-                </li>
-                <li>
-                    <img src="./Banque_dimage/VLOO-1.jpg" alt="VLOO Shirt">
-                    <button class="primary" data-id="3" onclick="document.getElementById('dialog3').showModal();">Open Dialog</button>
-                    <dialog id="dialog3">
-                        <h2>VLOO Shirt</h2>
-                        <button onclick="document.getElementById('dialog3').close();" aria-label="close" class="x">❌</button>
-                        <form method="post" action="">
-                            <input type="hidden" name="product_id" value="3">
-                            <button type="submit" name="add_to_cart">Ajouter au panier</button>
-                        </form>
-                    </dialog>
-                </li>
+               
+                   
                 <!-- Ajoutez d'autres produits ici -->
             </ul>
         </div>
