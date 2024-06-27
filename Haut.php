@@ -13,11 +13,11 @@
         <nav id='menu'>
             <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
             <ul>
-                <li><a href="index.html"><img id="logo" src="./asset/Logo_Shop.png" alt=""></a></li>
-                <li><a class='dropdown-arrow' href='#'>Homme</a>
+                <li><a href="index.php"><img id="logo" src="./asset/Logo_Shop.png" alt=""></a></li>
+                <li><a class='dropdown-arrow' href=''>Homme</a>
                     <ul class='sub-menus'>
-                        <li><a href='Haut.php'>Hauts</a></li>
-                        <li><a href='Bas.php'>Bas</a></li>
+                        <li><a href='./Haut.php'>Hauts</a></li>
+                        <li><a href='./Bas.php'>Bas</a></li>
                         <li><a href='#'>Chaussures</a></li>
                         <li><a href='#'>Accesoires</a></li>
                     </ul>

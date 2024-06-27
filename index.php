@@ -13,7 +13,7 @@
         <nav id='menu'>
             <input type='checkbox' id='responsive-menu' onclick='updatemenu()'><label></label>
             <ul>
-              <li><a href="index.html"><img  id="logo" src="./asset/Logo_Shop.png"  alt=""></li></a>
+              <li><a href="index.php"><img  id="logo" src="./asset/Logo_Shop.png"  alt=""></li></a>
               <li><a class='dropdown-arrow' >Homme</a>
                 <ul class='sub-menus'>
                   <li><a href='./Haut.php'>Hauts</a></li>
