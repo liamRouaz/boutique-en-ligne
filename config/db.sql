@@ -110,11 +110,6 @@ INSERT INTO categories (name) VALUES
     ("Accessoires");
 
 
-
-
-
-
-
 /* Insertion des produits */
 INSERT INTO products (name, description, image, price, category_id) VALUES
     ("ICECREAM", "Tee shirt", "Banque_dimage\\BBcicecream_shirt1.jpeg", 20, 1),

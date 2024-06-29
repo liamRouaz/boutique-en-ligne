@@ -1,77 +1,29 @@
 <?php
 
 class User {
-    private $id;
-    private $firstname;
-    private $surname;
-    private $email;
-    private $password;
-    private $address;
-    private $postcode;
-    private $city;
-    private $country;
-    private $phone;
-    private $role_id;
+    // Propriétés de l'utilisateur
+    public $id;
+    public $firstname;
+    public $surname;
+    public $email;
+    public $password;
+    public $address;
+    public $postcode;
+    public $city;
+    public $country;
+    public $phone;
+    public $role_id;
 
-    public function __construct($firstname, $surname, $email, $password, $address, $postcode, $city, $country, $phone, $role_id, $id = null) {
-        $this->id = $id;
-        $this->firstname = $firstname;
-        $this->surname = $surname;
-        $this->email = $email;
-        $this->password = $password;
-        $this->address = $address;
-        $this->postcode = $postcode;
-        $this->city = $city;
-        $this->country = $country;
-        $this->phone = $phone;
-        $this->role_id = $role_id;
+    // Constructeur pour initialiser les propriétés
+    public function __construct($data = []) {
+        foreach ($data as $key => $value) {
+            if (property_exists($this, $key)) {
+                $this->$key = $value;
+            }
+        }
     }
 
-    public function save() {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('INSERT INTO users (firstname, surname, email, password, address, postcode, city, country, phone, role_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)');
-        $stmt->execute([$this->firstname, $this->surname, $this->email, $this->password, $this->address, $this->postcode, $this->city, $this->country, $this->phone, $this->role_id]);
-    }
-
-    public function update() {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('UPDATE users SET firstname = ?, surname = ?, email = ?, password = ?, address = ?, postcode = ?, city = ?, country = ?, phone = ?, role_id = ? WHERE id = ?');
-        $stmt->execute([$this->firstname, $this->surname, $this->email, $this->password, $this->address, $this->postcode, $this->city, $this->country, $this->phone, $this->role_id, $this->id]);
-    }
-
-    public static function delete($id) {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('DELETE FROM users WHERE id = ?');
-        $stmt->execute([$id]);
-    }
-
-    public static function findById($id) {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('SELECT * FROM users WHERE id = ?');
-        $stmt->execute([$id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public static function findAll() {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->query('SELECT * FROM users');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
-
-    public static function findByEmail($email) {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('SELECT * FROM users WHERE email = ?');
-        $stmt->execute([$email]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
-    public function getRole() {
-        $pdo = Database::getConnection();
-        $stmt = $pdo->prepare('SELECT * FROM roles WHERE id = ?');
-        $stmt->execute([$this->role_id]);
-        return $stmt->fetch(PDO::FETCH_ASSOC);
-    }
-
+    // Méthode de validation
     public function validate() {
         $errors = [];
 
@@ -107,7 +59,7 @@ class User {
 
         // Vérifier que l'adresse n'est pas vide
         if (empty($this->address)) {
-            $errors[] = "Une adresse postale est requise.";
+            $errors[] = "L'adresse est requise.";
         }
 
         // Vérifier que le code postal est valide
@@ -117,12 +69,12 @@ class User {
 
         // Vérifier que la ville n'est pas vide
         if (empty($this->city)) {
-            $errors[] = "Une ville est requise.";
+            $errors[] = "La ville est requise.";
         }
 
         // Vérifier que le pays n'est pas vide
         if (empty($this->country)) {
-            $errors[] = "Un pays est requis.";
+            $errors[] = "Le pays est requis.";
         }
 
         // Vérifier que le téléphone est valide
@@ -132,6 +84,124 @@ class User {
 
         return $errors;
     }
+
+    // Méthode pour enregistrer l'utilisateur dans la base de données
+    public function save() {
+        // Connexion à la base de données
+        $db = Database::getConnection();
+
+        // Préparation de la requête d'insertion
+        $stmt = $db->prepare("
+            INSERT INTO users (firstname, surname, email, password, address, postcode, city, country, phone, role_id)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+        ");
+        $stmt->bind_param("sssssisisi", $this->firstname, $this->surname, $this->email, $this->password, $this->address, $this->postcode, $this->city, $this->country, $this->phone, $this->role_id);
+
+        // Exécution de la requête
+        if ($stmt->execute()) {
+            $this->id = $stmt->insert_id;
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    // Méthode pour mettre à jour l'utilisateur dans la base de données
+    public function update() {
+        // Connexion à la base de données
+        $db = Database::getConnection();
+
+        // Préparation de la requête de mise à jour
+        $stmt = $db->prepare("
+            UPDATE users SET firstname = ?, surname = ?, email = ?, password = ?, address = ?, postcode = ?, city = ?, country = ?, phone = ?, role_id = ?
+            WHERE id = ?
+        ");
+        $stmt->bind_param("sssssisisi", $this->firstname, $this->surname, $this->email, $this->password, $this->address, $this->postcode, $this->city, $this->country, $this->phone, $this->role_id, $this->id);
+
+        // Exécution de la requête
+        return $stmt->execute();
+    }
+
+    // Méthode pour trouver un utilisateur par son ID
+    public static function find($id) {
+        // Connexion à la base de données
+        $db = Database::getConnection();
+
+        // Préparation de la requête de sélection
+        $stmt = $db->prepare("SELECT * FROM users WHERE id = ?");
+        $stmt->bind_param("i", $id);
+
+        // Exécution de la requête
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($row = $result->fetch_assoc()) {
+                return new self($row);
+            }
+        }
+
+        return null;
+    }
+
+    // Méthode pour trouver un utilisateur par son email
+    public static function findByEmail($email) {
+        // Connexion à la base de données
+        $db = Database::getConnection();
+
+        // Préparation de la requête de sélection
+        $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
+        $stmt->bind_param("s", $email);
+
+        // Exécution de la requête
+        if ($stmt->execute()) {
+            $result = $stmt->get_result();
+            if ($row = $result->fetch_assoc()) {
+                return new self($row);
+            }
+        }
+
+        return null;
+    }
+
+    // Méthode pour supprimer un utilisateur par son ID
+    public static function delete($id) {
+        // Connexion à la base de données
+        $db = Database::getConnection();
+
+        // Préparation de la requête de suppression
+        $stmt = $db->prepare("DELETE FROM users WHERE id = ?");
+        $stmt->bind_param("i", $id);
+
+        // Exécution de la requête
+        return $stmt->execute();
+    }
+
+    // Méthode pour vérifier les informations d'identification de l'utilisateur (authentification)
+    public static function authenticate($email, $password) {
+        $user = self::findByEmail($email);
+        if ($user && password_verify($password, $user->password)) {
+            return $user;
+        }
+        return null;
+    }
+
+    // Fonction de liaison pour récupérer le rôle de l'utilisateur
+    public function getRole() {
+        return Role::find($this->role_id);
+    }
     
+    // Fonction de liaison pour récupérer les commandes de l'utilisateur
+    public function getOrders() {
+        return Order::findByUserId($this->id);
+    }
+
+    // Méthode pour créer une nouvelle commande pour cet utilisateur
+    public function createOrder($orderData) {
+        $orderData['user_id'] = $this->id;
+        $order = new Order($orderData);
+        if ($order->save()) {
+            return $order;
+        }
+        return null;
+    }
 }
 ?>

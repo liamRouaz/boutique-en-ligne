@@ -1,6 +1,4 @@
 <?php
-// controllers/UserController.php
-
 require_once 'models/User.php';
 
 class UserController {
@@ -32,9 +30,10 @@ class UserController {
             echo "Utilisateur non trouvé.";
             return;
         }
-
+        
+        // Logique de mise à jour du profil de l'utilisateur
         if ($_SERVER["REQUEST_METHOD"] == "POST") {
-            // Logique de mise à jour du profil de l'utilisateur
+            
             $user->firstname = $_POST["firstname"];
             $user->surname = $_POST["surname"];
             $user->email = $_POST["email"];
