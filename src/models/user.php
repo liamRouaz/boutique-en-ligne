@@ -1,7 +1,6 @@
 <?php
 
 class User {
-    // Propriétés de l'utilisateur
     public $id;
     public $firstname;
     public $surname;
@@ -14,7 +13,6 @@ class User {
     public $phone;
     public $role_id;
 
-    // Constructeur pour initialiser les propriétés
     public function __construct($data = []) {
         foreach ($data as $key => $value) {
             if (property_exists($this, $key)) {
@@ -27,22 +25,18 @@ class User {
     public function validate() {
         $errors = [];
 
-        // Vérifier que le prénom n'est pas vide
         if (empty($this->firstname)) {
             $errors[] = "Le prénom est requis.";
         }
 
-        // Vérifier que le nom de famille n'est pas vide
         if (empty($this->surname)) {
             $errors[] = "Le nom de famille est requis.";
         }
 
-        // Vérifier que l'email est valide
         if (empty($this->email) || !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
             $errors[] = "Une adresse email valide est requise.";
         }
 
-        // Vérifier que le mot de passe est valide
         if (!empty($this->password)) {
             if (strlen($this->password) < 8) {
                 $errors[] = "Le mot de passe doit contenir au moins 8 caractères.";
@@ -57,27 +51,22 @@ class User {
             $errors[] = "Le mot de passe est requis.";
         }
 
-        // Vérifier que l'adresse n'est pas vide
         if (empty($this->address)) {
             $errors[] = "L'adresse est requise.";
         }
 
-        // Vérifier que le code postal est valide
         if (empty($this->postcode) || !is_numeric($this->postcode)) {
             $errors[] = "Un code postal valide est requis.";
         }
 
-        // Vérifier que la ville n'est pas vide
         if (empty($this->city)) {
             $errors[] = "La ville est requise.";
         }
 
-        // Vérifier que le pays n'est pas vide
         if (empty($this->country)) {
             $errors[] = "Le pays est requis.";
         }
 
-        // Vérifier que le téléphone est valide
         if (!empty($this->phone) && !is_numeric($this->phone)) {
             $errors[] = "Un numéro de téléphone valide est requis.";
         }
@@ -87,17 +76,17 @@ class User {
 
     // Méthode pour enregistrer l'utilisateur dans la base de données
     public function save() {
-        // Connexion à la base de données
         $db = Database::getConnection();
 
-        // Préparation de la requête d'insertion
         $stmt = $db->prepare("
             INSERT INTO users (firstname, surname, email, password, address, postcode, city, country, phone, role_id)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         ");
         $stmt->bind_param("sssssisisi", $this->firstname, $this->surname, $this->email, $this->password, $this->address, $this->postcode, $this->city, $this->country, $this->phone, $this->role_id);
 
-        // Exécution de la requête
+        // Détermine le rôle en fonction de l'email
+        $this->role_id = Role::getRoleByEmail($this->email);
+
         if ($stmt->execute()) {
             $this->id = $stmt->insert_id;
             return true;
@@ -108,30 +97,24 @@ class User {
 
     // Méthode pour mettre à jour l'utilisateur dans la base de données
     public function update() {
-        // Connexion à la base de données
         $db = Database::getConnection();
 
-        // Préparation de la requête de mise à jour
         $stmt = $db->prepare("
             UPDATE users SET firstname = ?, surname = ?, email = ?, password = ?, address = ?, postcode = ?, city = ?, country = ?, phone = ?, role_id = ?
             WHERE id = ?
         ");
         $stmt->bind_param("sssssisisi", $this->firstname, $this->surname, $this->email, $this->password, $this->address, $this->postcode, $this->city, $this->country, $this->phone, $this->role_id, $this->id);
 
-        // Exécution de la requête
         return $stmt->execute();
     }
 
     // Méthode pour trouver un utilisateur par son ID
     public static function find($id) {
-        // Connexion à la base de données
         $db = Database::getConnection();
 
-        // Préparation de la requête de sélection
         $stmt = $db->prepare("SELECT * FROM users WHERE id = ?");
         $stmt->bind_param("i", $id);
 
-        // Exécution de la requête
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             if ($row = $result->fetch_assoc()) {
@@ -144,14 +127,11 @@ class User {
 
     // Méthode pour trouver un utilisateur par son email
     public static function findByEmail($email) {
-        // Connexion à la base de données
         $db = Database::getConnection();
 
-        // Préparation de la requête de sélection
         $stmt = $db->prepare("SELECT * FROM users WHERE email = ?");
         $stmt->bind_param("s", $email);
 
-        // Exécution de la requête
         if ($stmt->execute()) {
             $result = $stmt->get_result();
             if ($row = $result->fetch_assoc()) {
@@ -164,14 +144,11 @@ class User {
 
     // Méthode pour supprimer un utilisateur par son ID
     public static function delete($id) {
-        // Connexion à la base de données
         $db = Database::getConnection();
 
-        // Préparation de la requête de suppression
         $stmt = $db->prepare("DELETE FROM users WHERE id = ?");
         $stmt->bind_param("i", $id);
 
-        // Exécution de la requête
         return $stmt->execute();
     }
 
@@ -188,7 +165,7 @@ class User {
     public function getRole() {
         return Role::find($this->role_id);
     }
-    
+
     // Fonction de liaison pour récupérer les commandes de l'utilisateur
     public function getOrders() {
         return Order::findByUserId($this->id);

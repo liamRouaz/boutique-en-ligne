@@ -8,7 +8,6 @@ class Product {
     public $price;
     public $category_id;
 
-    // Constructeur
     public function __construct($name, $description, $image, $price, $category_id) {
         $this->name = $name;
         $this->description = $description;
@@ -103,6 +102,12 @@ class Product {
 
         return $products;
     }
+ 
+    // méthode pour récupérer la catégorie d'un produit
+    public function getCategory() {
+        return Category::find($this->category_id);
+    }
+    
 
     // Fonction de liaison pour récupérer les tailles disponibles pour ce produit avec les quantités disponibles
     public function getSizesWithQuantities() {

@@ -49,6 +49,7 @@ CREATE TABLE orders (
     id INTEGER PRIMARY KEY AUTO_INCREMENT NOT NULL,
     order_number INT UNIQUE,
     date DATETIME,
+    total_amount INTEGER,
     user_id INTEGER,
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
