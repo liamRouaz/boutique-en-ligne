@@ -113,6 +113,6 @@ class Category {
 
         return $productObjects;
     }
-
+}
 
 ?>
