@@ -1,4 +1,7 @@
 <?php
+require 'Database.php';
+require 'Category.php';
+
 
 class Product {
     public $id;

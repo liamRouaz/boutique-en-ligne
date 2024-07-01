@@ -1,4 +1,7 @@
 <?php
+require 'Database.php';
+require 'Product.php';
+require 'Stock.php';
 
 class Size {
     public $id;

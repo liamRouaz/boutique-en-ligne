@@ -1,4 +1,5 @@
 <?php
+require 'Database.php';
 
 class Role {
     const USER_ROLE = 'user';

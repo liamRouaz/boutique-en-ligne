@@ -1,5 +1,8 @@
 <?php
-require_once 'Role.php';
+require 'Database.php';
+require 'User.php';
+require 'Product.php';
+require 'Role.php';
 
 class Order {
     public $id;

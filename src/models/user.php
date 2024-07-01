@@ -1,4 +1,7 @@
 <?php
+require 'Database.php';
+require 'Role.php';
+require 'Order.php';
 
 class User {
     public $id;
