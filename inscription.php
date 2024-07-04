@@ -14,13 +14,13 @@
     <!-- name reference des variable -->
     <form method="POST" action="traitement.php">
         <label for="name">Nom</label>
-        <input type="text" placeholder="Entrez votre nom" name="nom" id="nom">
+        <input type="text" placeholder="Entrez votre nom" name="nom" id="nom" required>
         <br>
         <label for="">Prenom</label>
-        <input type="text" placeholder="Entrez votre prenom" name="prenom" id="prenom">
+        <input type="text" placeholder="Entrez votre prenom" name="prenom" id="prenom"required>
         <br>
         <label for="">Pseudo</label>
-        <input type="text" placeholder="Entrez votre pseudo" name="pseudo" id="pseudo">
+        <input type="text" placeholder="Entrez votre pseudo" name="pseudo" id="pseudo"required>
         <br>
         <label for="email">Email</label>
         <input type="email" placeholder="Entrez votre mail" id="email" name="email" required />
