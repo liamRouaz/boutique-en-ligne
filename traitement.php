@@ -6,5 +6,5 @@ if(isset($_POST["ok"])){
     echo $prenom=$_POST['prenom'];
     echo $pseudo=$_POST['pseudo'];
     echo $mdp=$_POST['password'];
-    echo $mail=$_POST['email']; 
+    echo $mail=$_POST['email'];
 }?>
